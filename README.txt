@@ -49,4 +49,5 @@ time unnaf  ../out.naf -o ../out
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # We calculate CPU usage over a period of time and then give average usage; the same is true for memory usage.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# 
+### Contacts 
+Please send an email to <subhankar.roy07@gmail.com> if you experience any issues.
