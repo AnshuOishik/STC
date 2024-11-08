@@ -1,27 +1,30 @@
 # Please use the following instructions to run the compressors.
 # Clone all repository from github:
 # FQZComp: https://sourceforge.net/projects/fqzcomp/
-# DSRC 2: https://github.com/lrog/dsrc
-# CoGI: http://admis.fudan.edu.cn/projects/cogi.htm
+# DSRC 2: https://github.com/lrog/dsrc; (Result): https://calc.biokirr.com/sequence-compression-benchmark/ 
+# CoGI: http://admis.fudan.edu.cn/projects/cogi.htm; (Result): https://github.com/cobilab/jarvis
 # NAF: https://github.com/KirillKryukov/naf 
-# GeCo3: https://github.com/cobilab/geco3
-# GeCo2: https://github.com/cobilab/geco2 
 # GeCo: https://github.com/cobilab/geco
+# GeCo2: https://github.com/cobilab/geco2 
+# GeCo3: https://github.com/cobilab/geco3
 # Jarvis: https://github.com/cobilab/jarvis
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# FQZComp
+# Please add cpuUsage.c to the repository for Memory & CPU usage
+# Please modified fqz_comp.c
 
-# FQZComp Compilation
+# Make
 cp Makefile Makefile2
 mv Makefile2 Makefile
 make
 
 # Run
-To compress:
-    time ./fqz_comp -s1 -q3 ../DNA/In.fastq ../DNA/comp.fqz
+# To compress:
+time ./fqz_comp -s1 -q3 ../DNA/In.fastq ../DNA/comp.fqz
 	
-To decompress:
-    time ./fqz_comp -d ../DNA/comp.fqz ../DNA/Out.fastq
-	
-	time ./fqz_comp -d -X ../DNA/comp.fqz ../DNA/Out.fastq [To pass checksum failures use -X in the decompressor]
+# To decompress:
+time ./fqz_comp -d ../DNA/comp.fqz ../DNA/Out.fastq
+time ./fqz_comp -d -X ../DNA/comp.fqz ../DNA/Out.fastq [To pass checksum failures use -X in the decompressor]
 	
 # Options:
 -s <level>
@@ -60,19 +63,16 @@ To decompress:
 
 The caveats and other informations in the original source. 
 https://sourceforge.net/projects/fqzcomp/
-
-# NAF Benchmark Compressor downloading linkS:
-NAF: https://github.com/KirillKryukov/naf 
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+# NAF
 # Executing the Compressors:
-
-#Run the following:
+# Run the following:
 conda install naf
 
-# clone all repository from github
+# Clone all repository from github
 git clone --recurse-submodules https://github.com/KirillKryukov/naf.git
 
-# Change ennaf.c, unnaf.c, Makefile in ennaf and unnaf, add cpuUsage.c (Given in the folder naf_modified)
+# Please change ennaf.c, unnaf.c, Makefile in ennaf and unnaf, add cpuUsage.c (Given in the folder naf_modified)
 
 # To install the required software, if not installed. Use the following command: 
 sudo apt install git gcc make diffutils perl
@@ -88,32 +88,31 @@ mkdir tempdir
 
 # To Run
 # run ennaf and unnaf using these command (inside ennaf dir and unnaf dir respectively)
-# Compress:
+# To compress:
 cd naf/ennaf
 time ./ennaf  <Input file path> -o <Output file path> --temp-dir <Temp dir path>
 # E.g. 
 time ./ennaf  ../BuEb -o ../out.naf --temp-dir ../tempdir/
 
-#Decompress:
+# To decompress:
 cd naf/unnaf
 time ./unnaf  <Comp file path> -o <Decom file path>
 # E.g.
 time unnaf  ../out.naf -o ../out
-
-# Executing the state-of-the-art compressors GeCo, GeCo2, geCo3 and Jarvis:
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Executing the state-of-the-art compressors GeCo, GeCo2, GeCo3, and Jarvis:
 
 # Install miniconda (https://docs.anaconda.com/miniconda/#quick-command-line-install) then run the following commands
 # For GeCo2: conda install -y -c bioconda geco2
 # For GeCo3: conda install -y -c bioconda geco3
 # For Jarvis: conda install -y -c bioconda jarvis
 
-# Modify geco and jarvis (modify garbage in defs.h and common.c)
+# Please modify and add the following to the original codes to measure memory and CPU usage:
+1. Please modify files of compressors GeCo and Jarvis (modify garbage in defs.h and common.c)
+2. Please add cpuUsage.c to the repository for memory & CPU usage
+3. Please modify geco(1, 2, 3).c and gede(1, 2, 3).c and Jarvis.c
 
-# Add cpuUsage.c to the repository for Memory & CPU usage
-
-# Modify geco(1,2,3).c and gede(1,2,3).c and Jarvis.c for Memory & CPU usage
-
-# Make
+# Make (To Compile)
 cp Makefile.linux Makefile2.linux
 mv Makefile2.linux Makefile
 make
@@ -137,10 +136,7 @@ make clean
 # Jarvis
 ./JARVIS -v -l <level> CompressedFileName
 ./JARVIS -v -d DecompressedFileName
-
-# We calculate CPU usage over a period of time and then give avg usage, same for Memory usage.
-
-# To run other compressor please use the readme file provided in the corresponding compressor folder
-
-# To change the file format, please use the code supplied in the following link:
-https://github.com/KirillKryukov/scb/tree/master/seq-tools-c.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# The compressors (FQZComp, GeCo, GeCo2, GeCo3, and Jarvis) code and other details obtained from the link
+# We calculate CPU usage over a period of time and then give average usage; the same is true for memory usage.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
