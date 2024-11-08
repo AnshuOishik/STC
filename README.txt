@@ -19,7 +19,7 @@ conda install naf
 # Clone all repository from github
 git clone --recurse-submodules https://github.com/KirillKryukov/naf.git
 
-# Please change ennaf.c, unnaf.c, Makefile in ennaf and unnaf, add cpuUsage.c (Given in the folder naf_modified)
+# Please change ennaf.c, unnaf.c, Makefile in ennaf and unnaf, add cpuUsage.c (Given in the folder naf_with_mem_cpu)
 
 # To install the required software, if not installed. Use the following command: 
 sudo apt install git gcc make diffutils perl
